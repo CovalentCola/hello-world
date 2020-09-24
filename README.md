@@ -1,3 +1,2 @@
-# hello-world
-Test repository
-my name jeff. this good.
+# Python-Testing
+This will be for testing various elements of Python as I go ahead and learn more.
