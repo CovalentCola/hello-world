@@ -8,4 +8,5 @@ e.g. "1" becomes "9", "4" becomes "6" and "nafsu21378ashdu213" would become "naf
 Mad Libs is a game where players can input a phrase to match a blank space in an example sentence. Similar to Cards Against Humanity.
 Hopefully I can improve the version I have here as it currently only lists the values inputted.
 
-「X進数の変換.py」は入力された10進数の数を2進数に直すスクリプトです。パイソンでは既に「bin()」という関数は存在しますが、こちらはそれを使用せず、マニュアルでできるものです。
+「X進数の変換.py」では、10進数から2進数か、2進数から10進数までの変換が出来る。
+パイソンでは既に「bin()」などという関数は存在しますが、こちらのプログラムはそれらを全く使用せず、マニュアルでできているものです。
