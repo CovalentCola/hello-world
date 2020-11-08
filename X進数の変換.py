@@ -22,27 +22,67 @@ def tentwoshin(x):
         print('エラーが発生しました。終わります。') # 起こらないはずだが、一応。
         time.sleep(1.5)
         sys.exit()
-two_output_list = []
+two_output_list = [] # why here???
 
-# 2進数から10進数に変換する関数。
-def tenshin():
-    allowed_chars = set('01') # 「1」と「0」のみが入力できるようにセットする。
+
+
+# 2進数から10進数に変換する関数を定義。
+def twotenshin():
+    # 入力には「1」「0」「.」の文字のみを許可する設定。
+    allowed_chars = set('01.')
+    
     y = input('10進数で求める2進数の数値を記入せよ：\n')
-    if y and allowed_chars.issuperset(y): # 「1」「0」以外がなければ進む。
-            str_y = str(y) # 順番に追加できるためにストリング変換。
-            z = len(str_y) - 1 # ストリングの長さで、個々の数字の重さが全てわかる。
-            power = 0
-            tenshin_output = []
-            while z >= 0: # 位置を順番に計算し、インプットの長さである「ｚ」を減らしていく。
-                tenshin_output.append(str(int(str_y[z]) * (2 ** power))) # 位置ごとの重さを計算しアウトプットに追加。
-                power +=1
-                z -= 1
-            tenshin_output = list(map(int, tenshin_output)) # リストの数値はストリングなので整数に変換。
-            print(sum(tenshin_output)) # 計算した数値を合わせて、結果として出す。
+
+    # 許可された文字だけ入力されていれば実行する。
+    if y and allowed_chars.issuperset(y):
+
+        # いくつかの変数を定義しておく。
+        decpointcount = 0
+        decpointlocation = 0
+        valuelocations = []
+        locationweights = []
+        
+        # 小数点が一つだけ入力されたかを確認。
+        for i in y:
+            if i == '.': 
+                decpointcount = decpointcount + 1
+        
+        if decpointcount > 1: # 小数点が２つ以上見つかった場合、プログラムを停止する。
+            print("エラー：「.」が一個以上発見されました。最初に戻ります。\n")
+            time.sleep(1.5)
+            twotenshin()
+            # 理想的ではないが、ここでプログラム停止命令をしなければ様子がおかしくなる。
+            sys.exit()
+            
+        elif decpointcount == 1: # 小数点が１つだけ見つかった場合、位置を特定する。
+            decpointlocation = y.find(".")
+            
+        elif decpointcount == 0: # 小数点が見つからなかった場合、入力された値の末尾にあると宣言する。
+            decpointlocation = len(y)
+        
+        # それぞれの「１」の重さを計るために、位置を特定し、貯蔵する。
+        for n in range(len(y)):
+            if y[n] == '1':
+                valuelocations.append(n)
+        
+        # それぞれの「１」と小数点の位置を比較し、重さを計る。
+        for i in valuelocations:
+            if i < decpointlocation:
+                locationweights.append( 2**((decpointlocation-i)-1) )
+            elif i > decpointlocation:
+                locationweights.append( 2**-(i - decpointlocation) )
+
+        # 価値のある値は「１」だけなので、そのまま合計を返せば終わり。
+        answer = sum(locationweights)
+        print(f"２進数の「{y}」を１０進数で表すと「{answer}」になる。\n")
+
+    # 違法な文字が入力された場合、再度入力を求める。
     else:
-        print('「1」と「0」しか入力できません。もう1度確認してください。\n')
-        time.sleep(1)
-        tenshin()
+        print('「1」「0」「.」しか入力できません。もう1度確認してください。\n')
+        time.sleep(1.5)
+        twotenshin()
+
+
 
 # ユーザーに選択肢を挙げる。回答によって2進数か10進数への変換関数を起動させる。
 def convert_choice(): 
@@ -56,7 +96,7 @@ def convert_choice():
             time.sleep(1)
             convert_choice()
     elif choice == '2':
-        tenshin()
+        twotenshin()
     else:
         print("\n「１」か「２」をのみ入力してください。\n")
         time.sleep(1)
