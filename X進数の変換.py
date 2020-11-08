@@ -1,9 +1,9 @@
 import math
 import time
-
+import sys
 
 # 10進数から2進数に変換する関数。
-def twoshin(x):
+def tentwoshin(x):
     global two_output_list # 定義外の変数にアクセス。
     if x < 1:
         two_output_list.reverse() # 紙で解くと同じく、結果を逆順番にする。
@@ -14,13 +14,13 @@ def twoshin(x):
         list.clear(two_output_list) # 繰り返し出来るよう、リストを空に戻す。
     elif x%2 == 0:
         two_output_list.append(str(0)) # 偶数の場合、そのまま結果リストに0を追加。
-        twoshin(x/2) # 割り切った偶数をまた関数に通す。
+        tentwoshin(x/2) # 割り切った偶数をまた関数に通す。
     elif x%2 != 0:
         two_output_list.append('1') # 奇数の場合、そのまま結果リストに1を追加
-        twoshin(math.floor(x/2)) # xを2で割った結果を切り捨て、関数に再度通す。
+        tentwoshin(math.floor(x/2)) # xを2で割った結果を切り捨て、関数に再度通す。
     else:
         print('エラーが発生しました。終わります。') # 起こらないはずだが、一応。
-        time.sleep(2)
+        time.sleep(1.5)
         sys.exit()
 two_output_list = []
 
@@ -40,7 +40,7 @@ def tenshin():
             tenshin_output = list(map(int, tenshin_output)) # リストの数値はストリングなので整数に変換。
             print(sum(tenshin_output)) # 計算した数値を合わせて、結果として出す。
     else:
-        print('「1」と「0」しか入力できません。もう1度確認してください。')
+        print('「1」と「0」しか入力できません。もう1度確認してください。\n')
         time.sleep(1)
         tenshin()
 
@@ -48,12 +48,13 @@ def tenshin():
 def convert_choice(): 
     choice = input('どの変換をお求めですか。\n <1>=10進数→2進数、<2>=2進数→10進数。\n')
     if choice == '1':
-        twoshin_input = input('2数で求める10進数の数値を記入せよ：\n')
-        if twoshin_input.isnumeric():
-            twoshin(int(twoshin_input))
+        tentwoshin_input = input('2進数で求める10進数の数値を記入せよ：\n')
+        if tentwoshin_input.isnumeric():
+            tentwoshin(int(tentwoshin_input))
         else:
-            print('数字しか入力できません。最初に戻ります。')
+            print('数字しか入力できません。最初に戻ります。\n')
             time.sleep(1)
+            convert_choice()
     elif choice == '2':
         tenshin()
     else:
