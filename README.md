@@ -1,9 +1,12 @@
 # Python-Testing
 This will be for testing various elements of Python as I go ahead and learn more.
 
-「X進数の変換.py」では、10進数から2進数か、2進数から10進数までの変換が出来る。
-パイソンでは既に「bin()」などという関数は存在しますが、こちらのプログラムはそれらを全く使用せず、マニュアルでできているものです。
-今のところ、浮動小数点を対応できるように工夫したいと思います。
+「X進数の変換.py」は、10進数から2進数か、2進数から10進数までの変換を行うプログラムです。
+パイソンでは既に「bin()」などという関数は存在しますが、こちらのプログラムはそれらを使用せず、マニュアルで実施するものです。
+今のところ、浮動小数点をちゃんと対応できるように工夫したいと思います。
+
+「整列アルゴリズム」は、基本情報技術者試験のアルゴリズム学習教材を基にした私が書きだした整列プログラムです。
+コードはごちゃごちゃしているかもしれませんが、一応動きます。また時間があったら工夫したいと思います。
 
 Jump the Five was an idea taken from kyclark's tiny_python_projects.
 It takes the opposite number (on the num pad) and replaces it in the original string.
