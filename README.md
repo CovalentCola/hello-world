@@ -1,5 +1,5 @@
 # Python-Testing
-This will be for testing various elements of Python as I go ahead and learn more.
+This will be for testing various elements of Python as I continue learning more.
 
 「X進数の変換.py」は、10進数から2進数か、2進数から10進数までの変換を行うプログラムです。
 パイソンでは既に「bin()」などという関数は存在しますが、こちらのプログラムはそれらを使用せず、マニュアルで実施するものです。
