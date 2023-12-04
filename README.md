@@ -6,7 +6,6 @@ This repository was for testing various elements of Python as I continued to lea
 
 ## Details
 
-It is not 
 「X進数の変換.py」は、10進数から2進数か、2進数から10進数までの変換を行うプログラムです。
 パイソンでは既に「bin()」などという関数は存在しますが、こちらのプログラムはそれらを使用せず、マニュアルで実施するものです。
 今のところ、浮動小数点をちゃんと対応できるように工夫したいと思います。
